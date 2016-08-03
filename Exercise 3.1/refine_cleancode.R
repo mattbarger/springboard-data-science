@@ -18,7 +18,7 @@ colnames(pkey) <- c("product_code","product")
 refine <- left_join(refine,pkey, by = "product_code")
 
 ##STEP 4: add full address for geocoding (using unite())
-refine %>% unite(full_address,c(address,city,country),sep = ", ")
+refine <- refine %>% unite(full_address,c(address,city,country),sep = ", ")
 
 ##STEP 5: create dummy  variables for company and product category (using mutate())
 refine <- refine %>% mutate(company_phillips = as.numeric(company == "phillips"))
